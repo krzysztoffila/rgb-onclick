@@ -4,16 +4,17 @@
 // jesli wartość dla x i y jest nieparzysta to kolor niebieski
 // jeśli jeden z kolorów jest parzysty a drugi nieparzysty to kolor zielony
 
-window.addEventListener('click', event => {
-    const x = event.clientX + 1;
-    const y = event.clientY + 1;
-    console.log(x, y)
-    if (x % 2 == 0 && y % 2 == 0) {
-        document.body.style.backgroundColor = 'red'
-    }
-    if (x % 2 !== 0 && y % 2 !== 0) {
-        document.body.style.backgroundColor = 'blue'
-    } else {
-        document.body.style.backgroundColor = 'green'
-    }
+document.addEventListener('click', event => {
+    const color = getColor(event);
+    document.body.style.backgroundColor = color;
 })
+
+const getColor = e => {
+    if (e.clientX % 2 === 0 && e.clientY % 2 === 0) {
+        return "red"
+    } else if (e.clientX % 2 !== 0 && e.clientY % 2 !== 0) {
+        return "blue"
+    } else {
+        return "green"
+    }
+}
